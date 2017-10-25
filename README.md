@@ -1,2 +1,2 @@
 # drag-and-drop-angular
-got a sample DnD code from codePen and modified the same to create a new drag and drop which does not allow duplicate drops.
+angular drag and drop used for searching employee based on criteria like-college, score, location etc,. This does not allow duplicate drops.
