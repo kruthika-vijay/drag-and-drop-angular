@@ -6,6 +6,7 @@
   <title>Search</title>
   <link rel="stylesheet" href="src/css/style.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
@@ -13,26 +14,29 @@
 </head>
 <body>
 
-    
-    
+
+
 <div ng-app="dragDrop" ng-controller="DragDropCtrl" class="container">
      <div class="col-sm-5 col-sm-offset-1">
-  <div class="item " ng-attr-id="{{ 'object-' + item }}" ng-repeat="item in ['College', 'Education', 'Subject of study','Score','Proximity of residence','Gender','Location','Compensation',' Notice period','Expected salary',' Interview ratings','Promotion expectation']" draggable item="item">{{ item }}</div>
+  <div class="item {{item.icon}} " ng-attr-id="{{ 'object-' + item.name }}" ng-repeat="item in itemList" draggable item="item">  {{ item.name }}</div>
     </div>
-  <div class="bin col-sm-6 " droppable drop="handleDrop"  bin="bin" id="bin{{ bin }}">{{ bin }}</div>
+    <div class="col-sm-6">
+  <div class="bin  " ng-attr-id="Male" droppable drop="handleDrop"  bin="bin"  style="background: url(src/images/male.png) no-repeat; opacity:0.2;">{{ bin }}</div>
+    <div class="bin  " ng-attr-id="Female" droppable drop="handleDrop"  bin="bin" style="background: url(src/images/female.png) no-repeat; opacity:0.2;">{{ bin }}</div>
+    </div>
   <div id="myModal" class="modal fade" role="dialog" data-backdrop="false">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        
+
         <h4 class="modal-title" ng-model="itemName">{{itemName}}</h4>
       </div>
       <div class="modal-body">
-          
+
           <select ng-model="myModel" ng-options="profile as profile.name for profile in userProfiles" class="profile-detail" >
-               
+
 						</select>
       </div>
       <div class="modal-footer">
@@ -43,7 +47,7 @@
   </div>
 </div>
     <button class="text-right search-button btn btn-info" id="save-search" ng-click="save()">Save</button>
-   
+    <div ng-model=searchString>{{searchString}}</div>
 </div>
    
  
